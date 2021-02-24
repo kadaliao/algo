@@ -35,10 +35,13 @@ def quick_sort_between(a: list[int], l: int, r: int):
 
 def partition(a: list[int], l: int, r: int) -> int:
     pivot, j = a[l], l
+    # j指向的是最后一个比pivot小的位置
     for i in range(l + 1, r + 1):
+        # 每遇到一个比pivot小的数，就交换到j后面，j也往后指
         if a[i] <= pivot:
             j += 1
             a[i], a[j] = a[j], a[i]
+    # 把pivot跟最后一个比pivot小的数互换，依然满足pivot之前的数都比pivot小
     a[l], a[j] = a[j], a[l]
     return j
 
