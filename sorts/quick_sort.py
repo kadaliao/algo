@@ -34,23 +34,23 @@ def quick_sort_between(a: list[int], l: int, r: int):
 
 
 def partition(a: list[int], l: int, r: int) -> int:
-    pivot, j = a[l], l
-    # j指向的是最后一个比pivot小的位置
-    for i in range(l + 1, r + 1):
-        # 每遇到一个比pivot小的数，就交换到j后面，j也往后指
+    pivot, p = a[r], l
+    # p指向第一个大于pivot的位置
+    for i in range(l, r):
+        # 每遇到一个小于等于pivot的数，就交换到p的位置
+        # p后移，使得p之前都小于等于pivot
         if a[i] <= pivot:
-            j += 1
-            a[i], a[j] = a[j], a[i]
-    # 把pivot跟最后一个比pivot小的数互换，依然满足pivot之前的数都比pivot小
-    a[l], a[j] = a[j], a[l]
-    return j
+            a[i], a[p] = a[p], a[i]
+            p += 1
+    # pivot换到p位置，满足p位置之前小于等于pivot
+    a[r], a[p] = a[p], a[r]
+    return p
 
 
 def test_merge_sort():
     a1 = [5, 2, 4, 1, 6, 0]
     quick_sort(a1)
     assert a1 == [0, 1, 2, 4, 5, 6]
-
 
     a2 = [1, 1, 1, 1]
     quick_sort(a2)
