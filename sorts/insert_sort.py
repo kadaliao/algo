@@ -8,7 +8,7 @@
 """
 
 
-def insert_sort(a):
+def insert_sort(a: list[int]):
     n = len(a)
 
     for i in range(1, n):

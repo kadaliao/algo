@@ -6,7 +6,7 @@
 """
 
 
-def select_sort(a):
+def select_sort(a: list[int]):
     n = len(a)
     for i in range(n):
         min_index = i
